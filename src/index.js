@@ -13,7 +13,7 @@ const Vector3 = { x: Types.f32, y: Types.f32, z: Types.f32 }
 const Position = defineComponent(Vector3)
 const Velocity = defineComponent(Vector3)
 
-const menuScene = new MenuScene()
+const menuScene = new MenuScene(app)
 
 menuScene.enter()
 document.body.appendChild(app.view)
