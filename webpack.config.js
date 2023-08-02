@@ -11,7 +11,8 @@ module.exports = {
         ]
     },
     devServer: {
-        static: './dist'
+        static: './dist',
+        allowedHosts: ['.csb.app']
     }
 }
 
