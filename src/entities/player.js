@@ -4,23 +4,22 @@ import position from '../components/position'
 import rectangle from '../components/rectangle'
 
 export default world => {
-    let eid = addEntity(world)
+  const eid = addEntity(world)
 
-    addComponent(world, position, eid)
-    position.x[eid] = 0
-    position.y[eid] = 0
-    position.z[eid] = 1
+  addComponent(world, position, eid)
+  position.x[eid] = 0
+  position.y[eid] = 0
+  position.z[eid] = 1
 
-    addComponent(world, velocity, eid)
-    velocity.x[eid] = 0
-    velocity.y[eid] = 0
+  addComponent(world, velocity, eid)
+  velocity.x[eid] = 0
+  velocity.y[eid] = 0
 
-    addComponent(world, rectangle, eid)
-    rectangle.x[eid] = 0
-    rectangle.y[eid] = 0
-    rectangle.w[eid] = 16
-    rectangle.h[eid] = 16
+  addComponent(world, rectangle, eid)
+  rectangle.x[eid] = 0
+  rectangle.y[eid] = 0
+  rectangle.w[eid] = 16
+  rectangle.h[eid] = 16
 
-    return eid
+  return eid
 }
-
