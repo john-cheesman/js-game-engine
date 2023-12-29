@@ -3,7 +3,7 @@ import velocity from '../components/velocity'
 import position from '../components/position'
 import rectangle from '../components/rectangle'
 
-export default function(world) {
+export default world => {
     let eid = addEntity(world)
 
     addComponent(world, position, eid)
