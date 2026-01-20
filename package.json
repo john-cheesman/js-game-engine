@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "standard --fix",
     "build": "npm run lint && vite build",
-    "dev": "npm run lint  && vite --open"
+    "dev": "npm run lint  && vite"
   },
   "private": true,
   "author": "John Cheesman",
