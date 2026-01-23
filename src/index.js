@@ -6,7 +6,38 @@ import MenuScene from './scenes/menu-scene'
 const app = new Application({ background: '#000000', resizeTo: window })
 Engine.create()
 
-const menuScene = new MenuScene(app)
+const keyControls = [
+  'KeyZ',
+  'KeyX',
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight'
+]
+
+const keys = {}
+const pads = []
+
+document.addEventListener('keydown', e => {
+  if (keyControls.includes(e.code)) {
+    keys[e.code] = true
+  }
+})
+
+document.addEventListener('keyup', e => {
+  if (keys[e.code]) {
+    keys[e.code] = false
+  }
+})
+
+document.addEventListener('gamepadconnected', e => pads.push(e.gamepad.index))
+
+document.addEventListener('gamepaddisconnected', e => {
+  const index = pads.findIndex(e.gamepad.index)
+  delete pads[index]
+})
+
+const menuScene = new MenuScene(app, keys)
 
 menuScene.enter()
 document.body.appendChild(app.view)

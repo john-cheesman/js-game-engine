@@ -1,6 +1,6 @@
 export default {
   x: [],
   y: [],
-  w: [],
-  h: []
+  a: [],
+  b: []
 }
