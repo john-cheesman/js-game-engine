@@ -4,7 +4,7 @@ import position from '../components/position'
 import rectangle from '../components/rectangle'
 import input from '../components/input'
 
-export default world => {
+export default (world) => {
   const eid = addEntity(world)
 
   addComponent(world, eid, position)
@@ -15,6 +15,7 @@ export default world => {
   addComponent(world, eid, velocity)
   velocity.x[eid] = 0
   velocity.y[eid] = 0
+  velocity.s[eid] = 10
 
   addComponent(world, eid, rectangle)
   rectangle.x[eid] = 0

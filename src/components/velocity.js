@@ -1,4 +1,5 @@
 export default {
   x: [],
-  y: []
+  y: [],
+  s: []
 }
