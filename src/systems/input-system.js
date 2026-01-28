@@ -4,6 +4,8 @@ import input from '../components/input'
 export default (keys, pads) => {
   return world => {
     for (const eid of query(world, [input])) {
+      input.x[eid] = 0
+      input.y[eid] = 0
       if (keys.ArrowUp) input.y[eid] -= 1
       if (keys.ArrowDown) input.y[eid] += 1
       if (keys.ArrowLeft) input.x[eid] -= 1
