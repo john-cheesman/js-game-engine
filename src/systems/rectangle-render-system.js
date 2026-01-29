@@ -3,8 +3,8 @@
 // import rectangle from '../components/rectangle'
 
 export default (world) => {
-    // for (const eid of query(world, [position, rectangle])) {
-    // }
+  // for (const eid of query(world, [position, rectangle])) {
+  // }
 
-    return world
+  return world
 }

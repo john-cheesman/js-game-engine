@@ -4,16 +4,16 @@
 // import mapData from '../maps/forest.json'
 
 export default (world) => {
-    // const mapPath = mapData[tilemap.id[eid]]
-    // console.log(mapData[tilemap.id[eid]])
-    // app.loader
-    //  .add('map', mapPath)
-    //  .load(() => {
-    //    // const stage = app.loader.resources.map.stage
-    //  })
+  // const mapPath = mapData[tilemap.id[eid]]
+  // console.log(mapData[tilemap.id[eid]])
+  // app.loader
+  //  .add('map', mapPath)
+  //  .load(() => {
+  //    // const stage = app.loader.resources.map.stage
+  //  })
 
-    // for (const eid of query(world, [position, tilemap])) {
-    // }
+  // for (const eid of query(world, [position, tilemap])) {
+  // }
 
-    return world
+  return world
 }

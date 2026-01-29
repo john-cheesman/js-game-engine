@@ -1,4 +1,3 @@
-import { pipe } from 'bitecs'
 import Scene from './scene'
 import player from '../entities/player'
 import map from '../entities/map'
@@ -21,11 +20,11 @@ export default class MenuScene extends Scene {
 
   update (dt) {
     this.world.dt = dt
-      inputSystem(this.world, this.keys, this.pads)
-      playerControlSystem(this.world)
-      positionSystem(this.world)
-      tilemapRenderSystem(this.world)
-      rectangleRenderSystem(this.world)
+    inputSystem(this.world, this.keys, this.pads)
+    playerControlSystem(this.world)
+    positionSystem(this.world)
+    tilemapRenderSystem(this.world)
+    rectangleRenderSystem(this.world)
   }
 
   draw () {}

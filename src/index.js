@@ -12,21 +12,23 @@ const keyControls = [
 const keys = {}
 const pads = []
 
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', (e) => {
   if (keyControls.includes(e.code)) {
     keys[e.code] = true
   }
 })
 
-document.addEventListener('keyup', e => {
+document.addEventListener('keyup', (e) => {
   if (keys[e.code]) {
     keys[e.code] = false
   }
 })
 
-document.addEventListener('gamepadconnected', e => pads.push(e.gamepad.index))
+document.addEventListener('gamepadconnected', (e) =>
+  pads.push(e.gamepad.index)
+)
 
-document.addEventListener('gamepaddisconnected', e => {
+document.addEventListener('gamepaddisconnected', (e) => {
   const index = pads.findIndex(e.gamepad.index)
   delete pads[index]
 })
@@ -37,10 +39,11 @@ menuScene.enter()
 
 let previousTime = 1
 
-const loop = t => {
+const loop = (t) => {
+  // console.log((t - previousTime) / 1000)
   menuScene.update((t - previousTime) / 1000)
   previousTime = t
   window.requestAnimationFrame(loop)
 }
 
-loop()
+window.requestAnimationFrame(loop)
