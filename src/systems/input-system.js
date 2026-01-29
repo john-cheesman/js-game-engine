@@ -1,8 +1,7 @@
 import { query } from 'bitecs'
 import input from '../components/input'
 
-export default (keys, pads) => {
-  return world => {
+export default (world, keys, pads) => {
     for (const eid of query(world, [input])) {
       input.x[eid] = 0
       input.y[eid] = 0
@@ -15,5 +14,4 @@ export default (keys, pads) => {
     }
 
     return world
-  }
 }

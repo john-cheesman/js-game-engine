@@ -1,12 +1,4 @@
-import { Engine } from 'matter-js'
-import { Application } from 'pixi.js'
-import './assets/forest.png'
 import MenuScene from './scenes/menu-scene'
-
-(async () => {
-const app = new Application()
-await app.init({ background: '#000000', resizeTo: window })
-Engine.create()
 
 const keyControls = [
   'KeyZ',
@@ -19,7 +11,6 @@ const keyControls = [
 
 const keys = {}
 const pads = []
-const gfx = new Map()
 
 document.addEventListener('keydown', e => {
   if (keyControls.includes(e.code)) {
@@ -40,8 +31,16 @@ document.addEventListener('gamepaddisconnected', e => {
   delete pads[index]
 })
 
-const menuScene = new MenuScene(app, keys, pads, gfx)
+const menuScene = new MenuScene(keys, pads)
 
 menuScene.enter()
-document.body.appendChild(app.canvas)
-})()
+
+let previousTime = 1
+
+const loop = t => {
+  menuScene.update((t - previousTime) / 1000)
+  previousTime = t
+  window.requestAnimationFrame(loop)
+}
+
+loop()

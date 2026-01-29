@@ -1,13 +1,11 @@
 import { createWorld } from 'bitecs'
 
 export default class Scene {
-  constructor (name, app, keys, pads, gfx) {
+  constructor (name, keys, pads) {
     this.world = createWorld()
     this.world.name = name
-    this.app = app
     this.keys = keys
     this.pads = pads
-    this.gfx = gfx
   }
 
   enter () {

@@ -3,8 +3,7 @@
 // import tilemap from '../components/tilemap'
 // import mapData from '../maps/forest.json'
 
-export default (app) => {
-  return (world) => {
+export default (world) => {
     // const mapPath = mapData[tilemap.id[eid]]
     // console.log(mapData[tilemap.id[eid]])
     // app.loader
@@ -17,5 +16,4 @@ export default (app) => {
     // }
 
     return world
-  }
 }
