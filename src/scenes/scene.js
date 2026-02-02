@@ -1,22 +1,25 @@
 import { createWorld } from 'bitecs'
 
 export default class Scene {
-  constructor (name, keys, pads) {
+  constructor (name, app) {
     this.world = createWorld()
-    this.world.name = name
-    this.keys = keys
-    this.pads = pads
+    this.name = name
+    this.app = app
   }
 
   enter () {
-    console.log(`Entered ${this.world.name}`)
+    console.log(`Entered ${this.name}`)
   }
 
   update (dt) {}
 
-  draw () {}
+  draw () {
+      this.app.context.clearRect(0, 0, this.app.canvas.width, this.app.canvas.height)
+      this.app.context.fillStyle = '#000000'
+      this.app.context.fillRect(0, 0, this.app.canvas.width, this.app.canvas.height)
+  }
 
   leave () {
-    console.log(`Left ${this.world.name}`)
+    console.log(`Left ${this.name}`)
   }
 }

@@ -1,16 +1,16 @@
 import { query } from 'bitecs'
 import input from '../components/input'
 
-export default (world, keys, pads) => {
+export default (world, app) => {
   for (const eid of query(world, [input])) {
     input.x[eid] = 0
     input.y[eid] = 0
-    if (keys.ArrowUp) input.y[eid] -= 1
-    if (keys.ArrowDown) input.y[eid] += 1
-    if (keys.ArrowLeft) input.x[eid] -= 1
-    if (keys.ArrowRight) input.x[eid] += 1
-    input.a = keys.KeyZ
-    input.b = keys.KeyX
+    if (app.keys.ArrowUp) input.y[eid] -= 1
+    if (app.keys.ArrowDown) input.y[eid] += 1
+    if (app.keys.ArrowLeft) input.x[eid] -= 1
+    if (app.keys.ArrowRight) input.x[eid] += 1
+    input.a = app.keys.KeyZ
+    input.b = app.keys.KeyX
   }
 
   return world

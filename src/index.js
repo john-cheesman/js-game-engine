@@ -1,53 +1,18 @@
-import Application from "./app";
-import MenuScene from "./scenes/menu-scene";
+import Application from './application'
+import MenuScene from './scenes/menu-scene'
 
-const keyControls = [
-  "KeyZ",
-  "KeyX",
-  "ArrowUp",
-  "ArrowDown",
-  "ArrowLeft",
-  "ArrowRight",
-];
+const app = new Application(160, 144)
+const menuScene = new MenuScene(app)
 
-const keys = {};
-const pads = [];
-const appEl = document.getElementById("app");
-const canvas = document.createElement("canvas");
-const app = new Application(320, 288);
+menuScene.enter()
 
-document.addEventListener("keydown", (e) => {
-  if (keyControls.includes(e.code)) {
-    keys[e.code] = true;
-  }
-});
-
-document.addEventListener("keyup", (e) => {
-  if (keys[e.code]) {
-    keys[e.code] = false;
-  }
-});
-
-document.addEventListener("gamepadconnected", (e) =>
-  pads.push(e.gamepad.index)
-);
-
-document.addEventListener("gamepaddisconnected", (e) => {
-  const index = pads.findIndex(e.gamepad.index);
-  delete pads[index];
-});
-
-const menuScene = new MenuScene(keys, pads);
-
-menuScene.enter();
-
-let previousTime = 1;
+let previousTime = 0
 
 const loop = (t) => {
-  // console.log((t - previousTime) / 1000)
-  menuScene.update((t - previousTime) / 1000);
-  previousTime = t;
-  window.requestAnimationFrame(loop);
-};
+  menuScene.update((t - previousTime) / 1000)
+  menuScene.draw()
+  previousTime = t
+  window.requestAnimationFrame(loop)
+}
 
-window.requestAnimationFrame(loop);
+window.requestAnimationFrame(loop)

@@ -8,8 +8,8 @@ import positionSystem from '../systems/position-system'
 import playerControlSystem from '../systems/player-control-system'
 
 export default class MenuScene extends Scene {
-  constructor (keys, pads) {
-    super('menu_scene', keys, pads)
+  constructor (app) {
+    super('menu_scene', app)
   }
 
   enter () {
@@ -20,14 +20,16 @@ export default class MenuScene extends Scene {
 
   update (dt) {
     this.world.dt = dt
-    inputSystem(this.world, this.keys, this.pads)
+    inputSystem(this.world, this.app)
     playerControlSystem(this.world)
     positionSystem(this.world)
-    tilemapRenderSystem(this.world)
-    rectangleRenderSystem(this.world)
   }
 
-  draw () {}
+  draw () {
+    super.draw()
+    tilemapRenderSystem(this.world)
+    rectangleRenderSystem(this.world, this.app)
+  }
 
   leave () {
     super.leave()
