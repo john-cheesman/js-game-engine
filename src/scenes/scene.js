@@ -14,9 +14,9 @@ export default class Scene {
   update (dt) {}
 
   draw () {
-      this.app.context.clearRect(0, 0, this.app.canvas.width, this.app.canvas.height)
-      this.app.context.fillStyle = '#000000'
-      this.app.context.fillRect(0, 0, this.app.canvas.width, this.app.canvas.height)
+    this.app.context.clearRect(0, 0, this.app.canvas.width, this.app.canvas.height)
+    this.app.context.fillStyle = '#000000'
+    this.app.context.fillRect(0, 0, this.app.canvas.width, this.app.canvas.height)
   }
 
   leave () {

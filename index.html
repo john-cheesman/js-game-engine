@@ -10,9 +10,13 @@
         overflow: hidden;
       }
       canvas {
-        width: 100%;
+        width: round(down, 100vw, 160px);
         height: 100%;
         image-rendering: pixelated;
+      }
+      #app {
+        display: flex;
+        justify-content: center;
       }
     </style>
   </head>
