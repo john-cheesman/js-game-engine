@@ -24,9 +24,65 @@
         justify-content: center;
         align-items: center;
       }
+      .gamepad {
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+      }
+      .button {
+        background: none;
+        color: white;
+        border: 2px solid white;
+        position: absolute;
+        opacity: 0.8;
+      }
+      .button--round {
+        font-size: min(8vw, 8vh);
+        width: min(14vw, 14vh);
+        height: min(14vw, 14vh);
+        border-radius: 50%;
+      }
+      .button--a {
+        bottom: min(10vw, 10vh);
+        right: min(5vw, 5vh);
+      }
+      .button--b {
+        bottom: min(5vw, 5vh);
+        right: min(25vw, 25vh);
+      }
+      .button--up {
+        width: min(30vw, 30vh);
+        height: min(10vw, 10vh);
+        bottom: min(25vw, 25vh);
+        left: min(5vw, 5vh);
+      }
+      .button--down {
+        width: min(30vw, 30vh);
+        height: min(10vw, 10vh);
+        bottom: min(5vw, 5vh);
+        left: min(5vw, 5vh);
+      }
+      .button--left {
+        width: min(10vw, 10vh);
+        height: min(30vw, 30vh);
+        bottom: min(5vw, 5vh);
+        left: min(5vw, 5vh);
+      }
+      .button--right {
+        width: min(10vw, 10vh);
+        height: min(30vw, 30vh);
+        bottom: min(5vw, 5vh);
+        left: min(25vw, 25vh);
+      }
       @media (any-pointer: coarse) {
         html {
           background-color: yellow;
+        }
+        .gamepad {
+          display: block;
         }
       }
       @media (any-pointer: coarse) and (orientation: landscape) {
@@ -42,6 +98,14 @@
   </head>
   <body>
     <div id="app"></div>
+    <div class="gamepad">
+      <button class="button button--round button--a" data-btn="a">A</button>
+      <button class="button button--round button--b" data-btn="b">B</button>
+      <button class="button button--up" data-btn="up"></button>
+      <button class="button button--down" data-btn="down"></button>
+      <button class="button button--left" data-btn="left"></button>
+      <button class="button button--right" data-btn="right"></button>
+    </div>
     <script type="module" src="/src/index.js"></script>
   </body>
 </html>
