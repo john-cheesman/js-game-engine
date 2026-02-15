@@ -15,7 +15,7 @@
         height: 100%;
       }
       canvas {
-        width: round(down, min(100vw, 100vh), 160px);
+        width: round(down, min(100svw, 100svh), 160px);
         height: 100%;
         image-rendering: pixelated;
       }
@@ -27,8 +27,8 @@
       .gamepad {
         display: none;
         position: absolute;
-        width: 100vw;
-        height: 100vh;
+        width: 100svw;
+        height: 100svh;
         top: 0;
         left: 0;
       }
@@ -40,42 +40,24 @@
         opacity: 0.8;
       }
       .button--round {
-        font-size: min(8vw, 8vh);
-        width: min(14vw, 14vh);
-        height: min(14vw, 14vh);
+        font-size: min(8svw, 8svh);
+        width: min(14svw, 14svh);
+        height: min(14svw, 14svh);
         border-radius: 50%;
       }
       .button--a {
-        bottom: min(10vw, 10vh);
-        right: min(5vw, 5vh);
+        bottom: min(10svw, 10svh);
+        right: min(5svw, 5svh);
       }
       .button--b {
-        bottom: min(5vw, 5vh);
-        right: min(25vw, 25vh);
+        bottom: min(5svw, 5svh);
+        right: min(25svw, 25svh);
       }
-      .button--up {
-        width: min(30vw, 30vh);
-        height: min(10vw, 10vh);
-        bottom: min(25vw, 25vh);
-        left: min(5vw, 5vh);
-      }
-      .button--down {
-        width: min(30vw, 30vh);
-        height: min(10vw, 10vh);
-        bottom: min(5vw, 5vh);
-        left: min(5vw, 5vh);
-      }
-      .button--left {
-        width: min(10vw, 10vh);
-        height: min(30vw, 30vh);
-        bottom: min(5vw, 5vh);
-        left: min(5vw, 5vh);
-      }
-      .button--right {
-        width: min(10vw, 10vh);
-        height: min(30vw, 30vh);
-        bottom: min(5vw, 5vh);
-        left: min(25vw, 25vh);
+      .button--dpad {
+        width: min(30svw, 30svh);
+        height: min(30svw, 30svh);
+        bottom: min(5svw, 5svh);
+        left: min(5svw, 5svh);
       }
       @media (any-pointer: coarse) {
         html {
@@ -88,7 +70,7 @@
       @media (any-pointer: coarse) and (orientation: landscape) {
         canvas {
           width: auto;
-          height: round(down, min(100vw, 100vh), 144px);
+          height: round(down, min(100svw, 100svh), 144px);
         }
         #app {
           height: 100%;
@@ -101,10 +83,7 @@
     <div class="gamepad">
       <button class="button button--round button--a" data-btn="KeyZ">A</button>
       <button class="button button--round button--b" data-btn="KeyX">B</button>
-      <button class="button button--up" data-btn="ArrowUp"></button>
-      <button class="button button--down" data-btn="ArrowDown"></button>
-      <button class="button button--left" data-btn="ArrowLeft"></button>
-      <button class="button button--right" data-btn="ArrowRight"></button>
+      <button class="button button--dpad" data-dpad></button>
     </div>
     <script type="module" src="/src/index.js"></script>
   </body>

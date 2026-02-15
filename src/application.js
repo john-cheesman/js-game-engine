@@ -21,6 +21,12 @@ export default class Application {
 
     this.keys = {};
     this.pads = [];
+    this.input = {
+      x: 0,
+      y: 0,
+      a: 0,
+      b: 0,
+    };
 
     document.addEventListener("keydown", (e) => {
       if (keyControls.includes(e.code)) {
@@ -44,6 +50,7 @@ export default class Application {
     });
 
     const gamepadBtns = document.querySelectorAll("[data-btn]");
+    const gamepadDpad = document.querySelector("[data-dpad]");
 
     gamepadBtns.forEach((btn) => {
       btn.addEventListener("touchstart", (e) => {
@@ -57,6 +64,34 @@ export default class Application {
           this.keys[e.currentTarget.dataset.btn] = false;
         }
       });
+    });
+
+    this.handleDpad = (e) => {
+      const el = e.currentTarget;
+      const rect = el.getBoundingClientRect();
+      const third = rect.width / 3;
+      const x =
+        e.clientX < rect.x + third
+          ? -1
+          : e.clientX > rect.x + third * 2
+          ? 1
+          : 0;
+      const y =
+        e.clientY < rect.y + third
+          ? -1
+          : e.clientY > rect.y + third * 2
+          ? 1
+          : 0;
+      console.log(x, y);
+      this.input.x = x;
+      this.input.y = y;
+    };
+
+    gamepadDpad.addEventListener("pointerdown", this.handleDpad);
+    gamepadDpad.addEventListener("pointermove", this.handleDpad);
+    gamepadDpad.addEventListener("pointerup", (_) => {
+      this.input.x = 0;
+      this.input.y = 0;
     });
   }
 }
