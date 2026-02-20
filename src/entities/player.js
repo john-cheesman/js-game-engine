@@ -24,10 +24,6 @@ export default (world) => {
   rectangle.h[eid] = 16
 
   addComponent(world, eid, input)
-  input.x[eid] = 0
-  input.y[eid] = 0
-  input.a[eid] = false
-  input.b[eid] = false
 
   return eid
 }

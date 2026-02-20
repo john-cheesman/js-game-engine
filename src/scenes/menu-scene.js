@@ -3,7 +3,6 @@ import player from '../entities/player'
 import map from '../entities/map'
 import rectangleRenderSystem from '../systems/rectangle-render-system'
 import tilemapRenderSystem from '../systems/tilemap-render-system'
-import inputSystem from '../systems/input-system'
 import positionSystem from '../systems/position-system'
 import playerControlSystem from '../systems/player-control-system'
 
@@ -20,8 +19,7 @@ export default class MenuScene extends Scene {
 
   update (dt) {
     this.world.dt = dt
-    inputSystem(this.world, this.app)
-    playerControlSystem(this.world)
+    playerControlSystem(this.world, this.app)
     positionSystem(this.world)
   }
 

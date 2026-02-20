@@ -13,6 +13,10 @@ export default (world, app) => {
     input.b = app.keys.KeyX
     input.x[eid] = app.input.x
     input.y[eid] = app.input.y
+    input.aDown[eid] = app.input.a
+    input.aPressed[eid] = app.input.a
+    input.bDown[eid] = app.input.b
+    input.bPressed[eid] = app.input.b
   }
 
   return world

@@ -30,7 +30,25 @@ export default class Application {
 
     document.addEventListener('keydown', (e) => {
       if (keyControls.includes(e.code)) {
-        this.keys[e.code] = true
+        switch (e.code) {
+          case 'KeyZ':
+            this.input.a = 1
+            break
+          case 'KeyX':
+            this.input.b = 1
+            break
+          case 'ArrowUp':
+            this.input.y = -1
+            break
+          case 'ArrowDown':
+            this.input.y = 1
+            break
+          case 'ArrowLeft':
+            this.input.x = -1
+            break
+          case 'ArrowRight':
+            this.input.x = 1
+        }
       }
     })
 
@@ -54,32 +72,37 @@ export default class Application {
 
     gamepadBtns.forEach((btn) => {
       btn.addEventListener('touchstart', (e) => {
-        if (keyControls.includes(e.currentTarget.dataset.btn)) {
-          this.keys[e.currentTarget.dataset.btn] = true
+        e.preventDefault()
+        if (e.currentTarget.dataset.btn in this.input) {
+          this.input[e.currentTarget.dataset.btn] = 1
+          // alert(`button ${e.currentTarget.dataset.btn} pressed`);
         }
       })
 
       btn.addEventListener('touchend', (e) => {
-        if (this.keys[e.currentTarget.dataset.btn]) {
-          this.keys[e.currentTarget.dataset.btn] = false
+        e.preventDefault()
+        if (this.input[e.currentTarget.dataset.btn] === 1) {
+          this.input[e.currentTarget.dataset.btn] = 0
         }
       })
     })
 
     this.handleDpad = (e) => {
+      e.preventDefault()
+      const t = e.targetTouches[0]
       const el = e.currentTarget
       const rect = el.getBoundingClientRect()
       const third = rect.width / 3
       const x =
-        e.clientX < rect.x + third
+        t.clientX < rect.x + third
           ? -1
-          : e.clientX > rect.x + third * 2
+          : t.clientX > rect.x + third * 2
             ? 1
             : 0
       const y =
-        e.clientY < rect.y + third
+        t.clientY < rect.y + third
           ? -1
-          : e.clientY > rect.y + third * 2
+          : t.clientY > rect.y + third * 2
             ? 1
             : 0
       console.log(x, y)
@@ -87,11 +110,15 @@ export default class Application {
       this.input.y = y
     }
 
-    gamepadDpad.addEventListener('pointerdown', this.handleDpad)
-    gamepadDpad.addEventListener('pointermove', this.handleDpad)
-    gamepadDpad.addEventListener('pointerup', (_) => {
+    this.handleDpadEnd = (e) => {
+      e.preventDefault()
       this.input.x = 0
       this.input.y = 0
-    })
+    }
+
+    gamepadDpad.addEventListener('touchstart', this.handleDpad)
+    gamepadDpad.addEventListener('touchmove', this.handleDpad)
+    gamepadDpad.addEventListener('touchend', this.handleDpadEnd)
+    gamepadDpad.addEventListener('touchcancel', this.handleDpadEnd)
   }
 }
